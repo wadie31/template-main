@@ -1,0 +1,112 @@
+<nz-drawer
+  [nzClosable]="true"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="add transaction"
+  (nzOnClose)="onClose()"
+  nzWidth="80%"
+>
+  <ng-container *nzDrawerContent>
+    <nz-spin nzTip="Loading..." [nzSpinning]="isLoading">
+      <form nz-form [formGroup]="addForm" (ngSubmit)="submitForm()">
+        <div nz-row [nzGutter]="[16, 16]">
+          <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input the amount!">
+                <input
+                  formControlName="amount"
+                  nz-input
+                  type="number"
+                  placeholder="Amount"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please select a currency!">
+                <input
+                  formControlName="currency"
+                  nz-input
+                  placeholder="Currency"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please select a transaction date!">
+                <nz-date-picker
+                  class="full-with"
+                  [nzFormat]="'yyyy/MM/dd'"
+                  formControlName="transactionDate"
+                  placeholder="Transaction Date"
+                ></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please enter a description!">
+                <input
+                  formControlName="description"
+                  nz-input
+                  placeholder="Description"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please select an account!">
+                <nz-select
+                  formControlName="account"
+                  nzPlaceHolder="Select Account"
+                >
+                  <nz-option
+                    *ngFor="let account of accounts"
+                    [nzValue]="account"
+                    [nzLabel]="account.accountNumber"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please select a payment method!">
+                <nz-select
+                  formControlName="paymentMethod"
+                  nzPlaceHolder="Select Payment Method"
+                >
+                  <nz-option
+                    *ngFor="let method of paymentMethods"
+                    [nzValue]="method"
+                    [nzLabel]="method.accountNumber"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row>
+          <div nz-col [nzSpan]="24" class="justify-end">
+            <nz-form-item>
+              <nz-form-control>
+                <button nz-button nzType="primary" [disabled]="addForm.invalid">
+                  Submit
+                </button>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+    </nz-spin>
+  </ng-container>
+</nz-drawer>

@@ -1,0 +1,41 @@
+<nz-content class="inner-content">
+  <div nz-row [nzGutter]="[16, 16]">
+    <div nz-col class="gutter-row justify-end" [nzSpan]="24">
+      <button nz-button nzType="primary" (click)="onAdd(true)">add</button>
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="24">
+      <app-rechercher-transaction
+        (search)="onSearch($event)"
+      ></app-rechercher-transaction>
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="24">
+      <app-datatable-transaction
+        (delete)="onDelete($event)"
+        (edit)="onEdit($event)"
+        (detail)="onDetail(true, $event)"
+        [data]="data"
+        [isLoading]="false"
+      ></app-datatable-transaction>
+    </div>
+  </div>
+  <ng-container *ngIf="isDetailOpen && transactionSelected">
+    <app-detail-transaction
+      [visible]="isDetailOpen"
+      [transaction]="transactionSelected"
+      (close)="onDetail(false)"
+    ></app-detail-transaction>
+  </ng-container>
+  <ng-container *ngIf="isAddOpen">
+    <app-add-transaction
+      [visible]="isAddOpen"
+      (close)="onAdd(false, true)"
+    ></app-add-transaction>
+  </ng-container>
+  <ng-container *ngIf="isEditOpen && transactionSelected">
+    <app-edit-transaction
+      [visible]="isEditOpen"
+      [transaction]="transactionSelected"
+      (close)="closeEdit()"
+    ></app-edit-transaction>
+  </ng-container>
+</nz-content>

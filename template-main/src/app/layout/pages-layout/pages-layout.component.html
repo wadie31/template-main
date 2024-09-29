@@ -1,0 +1,46 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+        <h1>Test</h1>
+      </a>
+    </div>
+    <app-menu [isCollapsed]="isCollapsed"></app-menu>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div nz-row nzJustify="space-between" class="app-header">
+        <div nz-col nzSpan="12">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <span
+              class="trigger"
+              nz-icon
+              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></span>
+          </span>
+        </div>
+        <div nz-col nzSpan="12" class="justify-end">
+          <span class="header-logout" (click)="logout()">
+            <span
+              nz-icon
+              nzType="poweroff"
+              nzTheme="outline"
+              class="font-16"
+            ></span>
+          </span>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

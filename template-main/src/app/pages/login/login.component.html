@@ -1,0 +1,50 @@
+<div class="login-container">
+  <div nz-row nzJustify="center" nzAlign="middle" class="full-height">
+    <div nz-col [nzXs]="24" [nzSm]="18" [nzMd]="12" [nzLg]="8" [nzXl]="6">
+      <nz-card class="responsive-card">
+        <div class="logo-img">
+          <img alt="logo" src="assets/logo.png" class="img-fluid" />
+        </div>
+        <form
+          nz-form
+          [formGroup]="validateForm"
+          class="login-form"
+          (ngSubmit)="submitForm()"
+        >
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+              <nz-input-group nzPrefixIcon="user">
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="username"
+                  placeholder="Username"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input
+                  type="password"
+                  nz-input
+                  formControlName="password"
+                  placeholder="Password"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <button
+            nz-button
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+          >
+            Log in
+          </button>
+          <div class="login-form-forgot"><a>Forgot password?</a></div>
+        </form>
+      </nz-card>
+    </div>
+  </div>
+</div>

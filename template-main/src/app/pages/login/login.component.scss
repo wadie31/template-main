@@ -1,0 +1,42 @@
+.login-container {
+  height: 100vh;
+  background: #a7ccef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-height {
+  width: 100%;
+}
+
+.responsive-card {
+  margin: 10px 0;
+}
+
+.logo-img {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+  width: 100%;
+
+  img {
+    width: 130px;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+}
+
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  text-align: center;
+}
+
+.login-form-button {
+  width: 100%;
+}

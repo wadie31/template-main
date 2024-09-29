@@ -1,0 +1,13 @@
+<ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
+  <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+  <ng-template #menuTpl let-menus>
+    <ng-container *ngFor="let menu of menus">
+      <li class="sidebar-menu" nz-menu-item nzMatchRouter>
+        <a [routerLink]="menu.link" routerLinkActive="active">
+          <span nz-icon [nzType]="menu.icon" nzTheme="outline"></span>
+          <span>{{ menu.title }}</span>
+        </a>
+      </li>
+    </ng-container>
+  </ng-template>
+</ul>

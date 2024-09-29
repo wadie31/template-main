@@ -1,0 +1,89 @@
+<app-collapse header="Resultat" [active]="true">
+  <div nz-row [nzGutter]="[16, 16]">
+    <div nz-col [nzSpan]="24">
+      <nz-table
+        #dataTable
+        [nzData]="data"
+        [nzLoading]="isLoading"
+        [nzOuterBordered]="true"
+        nzFrontPagination="true"
+        nzShowPagination
+        nzShowSizeChanger
+        nzSize="small"
+      >
+        <thead>
+          <tr>
+            <th id="id">id</th>
+            <th id="amount">amount</th>
+            <th id="currency">currency</th>
+            <th id="status">status</th>
+            <th id="transactionDate">transaction date</th>
+            <th id="actions" nzRight nzWidth="50px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataTable.data">
+            <td>{{ item.id }}</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.currency }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.transactionDate | date : "yyyy-MM-dd HH:mm:ss" }}</td>
+            <td
+              [nzDropdownMenu]="menu"
+              nz-button
+              nz-dropdown
+              nzPlacement="bottomRight"
+              nzRight
+            >
+              <div class="cursor-pointer text-center">
+                <span
+                  nz-icon
+                  nzType="align-right"
+                  nzTheme="outline"
+                  class="font-16"
+                ></span>
+              </div>
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul class="doctor-dropdown-menu" nz-menu>
+                  <li nz-menu-item>
+                    <a (click)="onDetail(item)">
+                      <span
+                        nz-icon
+                        nzType="more"
+                        nzTheme="outline"
+                        class="font-16"
+                      ></span>
+                      Detail
+                    </a>
+                  </li>
+                  <li nz-menu-item>
+                    <a (click)="onEdit(item)">
+                      <span
+                        nz-icon
+                        nzType="edit"
+                        nzTheme="outline"
+                        class="font-16"
+                      ></span>
+                      Edit
+                    </a>
+                  </li>
+                  <li nz-menu-item>
+                    <a (click)="confirmDelete(item)">
+                      <span
+                        nz-icon
+                        nzType="delete"
+                        nzTheme="outline"
+                        class="font-16"
+                      ></span>
+                      Delete
+                    </a>
+                  </li>
+                </ul>
+              </nz-dropdown-menu>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</app-collapse>

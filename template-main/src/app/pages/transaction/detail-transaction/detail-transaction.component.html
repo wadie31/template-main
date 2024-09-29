@@ -1,0 +1,63 @@
+<nz-drawer
+  [nzClosable]="true"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="Detail transaction"
+  (nzOnClose)="onClose()"
+  nzWidth="80%"
+>
+  <ng-container *nzDrawerContent>
+    <nz-descriptions [nzColumn]="{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }">
+      <nz-descriptions-item nzTitle="id">{{
+        transaction.id
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="amount">{{
+        transaction.amount
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="currency">{{
+        transaction.currency
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="status">{{
+        transaction.status
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="transactionDate">{{
+        transaction.transactionDate | date : "yyyy-MM-dd HH:mm:ss"
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="status">{{
+        transaction.description
+      }}</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-descriptions
+      nzTitle="account"
+      [nzColumn]="{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }"
+    >
+      <nz-descriptions-item nzTitle="number">{{
+        transaction.account.accountNumber
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="balance"
+        >{{ transaction.account.balance }}
+        {{ transaction.account.currency }}</nz-descriptions-item
+      >
+      <nz-descriptions-item nzTitle="type">{{
+        transaction.account.accountType
+      }}</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-descriptions
+      nzTitle="payment method"
+      [nzColumn]="{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }"
+    >
+      <nz-descriptions-item nzTitle="account number">{{
+        transaction.paymentMethod.accountNumber
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="type">{{
+        transaction.paymentMethod.type
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="provider">{{
+        transaction.paymentMethod.provider
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="expiry date">{{
+        transaction.paymentMethod.expiryDate | date : "yyyy-MM-dd"
+      }}</nz-descriptions-item>
+    </nz-descriptions>
+  </ng-container>
+</nz-drawer>

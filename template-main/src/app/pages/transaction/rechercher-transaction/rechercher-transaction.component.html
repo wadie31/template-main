@@ -1,0 +1,57 @@
+<app-collapse header="Rechercher" [active]="true">
+  <form nz-form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="[16, 16]">
+      <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                formControlName="transactionId"
+                nz-input
+                placeholder=" transaction ID"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <nz-range-picker
+                formControlName="dateRange"
+                class="full-with"
+              ></nz-range-picker>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="8">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group>
+              <nz-select formControlName="status" nzPlaceHolder="Select status">
+                <nz-option nzValue="" nzLabel=""></nz-option>
+                <nz-option nzValue="PENDING" nzLabel="PENDING"></nz-option>
+                <nz-option nzValue="FAILED" nzLabel="FAILED"></nz-option>
+                <nz-option nzValue="COMPLETED" nzLabel="COMPLETED"></nz-option>
+              </nz-select>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row>
+      <div nz-col [nzSpan]="24" class="justify-end">
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary">Rechercher</button>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</app-collapse>
